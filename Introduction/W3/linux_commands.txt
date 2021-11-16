@@ -1,0 +1,15 @@
+ls
+type
+ssh
+cd
+pwd
+whoami
+ps ax
+ps ax | grep
+top
+htop
+ip address
+ifconfig
+ctrl + shift + c  ---> copy
+ctrl + shift + v  ---> paste
+sudo su [user]

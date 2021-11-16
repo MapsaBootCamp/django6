@@ -1,0 +1,3 @@
+[2021-10-29 12:11]-WARNING-56: salam
+[2021-10-29 12:12]-WARNING-/home/ashkan/Documents/django6/Introduction/W2/multiply_numbers.py-56: salam
+[2021-10-29 12:16]-ERROR-/home/ashkan/Documents/django6/Introduction/W2/multiply_numbers.py-10: taghsim be sefr nadarim
