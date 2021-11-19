@@ -4,6 +4,7 @@ from uuid import uuid4
 
 from db import BaseQuery
 
+
 class MetaBase(type):
     
     def __init__(self, *args, **kwargs):
