@@ -21,10 +21,15 @@ class Element:
         else:
             return False
 
+
 class LinkedList:
 
     def __init__(self) -> None:
         self.root: Optional[Element] = None
+
+    def _add_node(self, node):
+        pass
+  
 
     def add_begin(self, node: Element) -> None:
         if not node.is_free():
@@ -42,15 +47,25 @@ class LinkedList:
         pass
 
     def push(self, node: Element) -> None:
-        pass
+        if self.root is None:
+            self.root = node
+            node.add_to_linked_list()
+        else:
+            temp = self.root
+            while temp.next:
+                temp = temp.next
+            temp.next = node
+            node.add_to_linked_list()
+            
 
-    def pop(self) -> None:
+
+    def pop(self) -> Element:
         pass
 
     def search(self, node: Element) -> bool:
         pass
 
-    def add_between(self, node1: Element, node2: Element):
+    def add_between(self, node1: Element, new_node: Element):
         pass
 
     def remove(self, node: Element):
@@ -83,4 +98,7 @@ l1.add_begin(elm1)
 l1.add_begin(elm2)
 l1.add_begin(elm3)
 
+print(l1)
+elm4 = Element("mapsa")
+l1.push(elm4)
 print(l1)
