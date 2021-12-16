@@ -1,6 +1,7 @@
 from django.db import models
 # from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
+from django.db.models.manager import Manager
 
 User = get_user_model()
 
@@ -14,7 +15,6 @@ class Profile(User):
 
     def __str__(self) -> str:
         return self.username
-
 
 class Mentor(Profile):
     
