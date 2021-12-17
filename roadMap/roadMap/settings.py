@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'level_maker',
     'courses',
     'cart',
+    'payment',
 ]
 
 MIDDLEWARE = [
@@ -115,7 +116,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
-LANGUAGE_CODE = 'fa-ir'
+LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'Asia/Tehran'
 

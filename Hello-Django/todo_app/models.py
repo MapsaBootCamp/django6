@@ -35,3 +35,35 @@ class Todo(models.Model):
     
     def __str__(self) -> str:
         return self.title
+
+
+class Publication(models.Model):
+    title = models.CharField(max_length=30)
+
+    class Meta:
+        ordering = ['title']
+
+    def __str__(self):
+        return self.title
+
+class Article(models.Model):
+    headline = models.CharField(max_length=100)
+    publications = models.ManyToManyField(Publication, through="PublicationArticle")
+
+    class Meta:
+        ordering = ['headline']
+
+    def __str__(self):
+        return self.headline
+
+
+class PublicationArticle(models.Model):
+    article = models.ForeignKey(Article, on_delete=models.CASCADE)
+    publications = models.ForeignKey(Publication, on_delete=models.CASCADE)
+    published_date = models.DateTimeField(auto_now_add=True)
+    rate = models.IntegerField()
+
+
+
+    class Meta:
+        db_table = "publicatin_article"

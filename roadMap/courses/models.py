@@ -23,6 +23,7 @@ class Course(models.Model):
     category = models.ForeignKey(CourseCategory, related_name = "courses", on_delete= models.SET_NULL, null=True)
     tag = models.ManyToManyField(Tag, blank=True)
     img = models.ImageField(upload_to="course/images/", null=True, blank=True)
+    price = models.IntegerField(null=True)
 
     def __str__(self) -> str:
         return self.name
