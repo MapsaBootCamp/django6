@@ -1,0 +1,28 @@
+body {
+    font-size: 25px;
+}
+
+
+.category{
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    background-color: bisque;
+    padding: 5px;
+}
+
+.category li{
+    margin-right: 5px;
+    font-size: 25px;
+    
+}
+
+.category li a{
+    text-decoration: none;
+    color: blueviolet;
+
+}
+
+/* .course-card{
+
+} */

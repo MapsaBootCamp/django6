@@ -24,6 +24,7 @@ class Course(models.Model):
     tag = models.ManyToManyField(Tag, blank=True)
     img = models.ImageField(upload_to="course/images/", null=True, blank=True)
     price = models.IntegerField(null=True)
+    description = models.TextField(null=True)
 
     def __str__(self) -> str:
         return self.name

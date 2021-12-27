@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load course_cat %}
+
+{% block header %}
+    <ul class="category">
+    {% comment %} {% get_course_cat %} {% endcomment %}
+        {% for category in course_cat_from_processor %} 
+            <li><a href="{% url 'courses:course_cat_list' category.id %}">{{category.title}}</a> </li>
+        {% endfor %}
+        <form action="{% url 'courses:course_search' %}" method="GET">
+            <input name="q" type="text" placeholder="course search"/>
+            <input type="submit" value="search" />
+        </form>
+    </ul>
+{% endblock header %}
+
+
+{% block content %}
+{% endblock content %}

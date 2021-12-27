@@ -1,0 +1,17 @@
+
+<div id="header">
+    {% block header %}
+    <ul class="category">
+            <li> <a href="{% url 'home'%}">home</a></li>
+            <li> <a href="{% url 'courses:course_list'%}">courses</a> </li>
+            {% if user.is_authenticated %}
+                <li>salam {{user.username}}</li>
+                <li><a href="{% url 'users:logout' %}">logout</a></li>
+            {% else %}
+                <li><a href="{% url 'users:login' %}">login</a></li>
+                <li><a href="{% url 'users:register' %}">register</a></li>
+            {% endif %}
+    </ul>
+    {% endblock header %}
+
+</div>

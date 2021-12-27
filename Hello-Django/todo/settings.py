@@ -19,6 +19,23 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+LOGGING = {
+    'version': 1,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': '/tmp/django.log',
+        }
+    },
+    'loggers': {
+        'django.db.backends': {
+            'level': 'DEBUG',
+            'handlers': ['file'],
+        }
+    }
+}
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -32,6 +49,7 @@ INSTALLED_APPS = [
     'django_extensions',
 
     'todo_app',
+    'books',
 ]
 
 MIDDLEWARE = [

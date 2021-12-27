@@ -6,7 +6,7 @@ from django.db.models.manager import Manager
 User = get_user_model()
 
 class Profile(User):
-    phone_number = models.CharField(max_length=11, verbose_name="شماره تلفن")
+    phone_number = models.CharField(max_length=11, verbose_name="phone number")
     img = models.ImageField(upload_to="profiles/", null=True, blank=True)
     
     class Meta:
