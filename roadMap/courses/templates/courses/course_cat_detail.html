@@ -4,7 +4,9 @@
     <div class="card-deck">
         {% for course in courses %}
             <div class="card course-card">
+                {% if course.img %}
                 <img class="card-img-top" src="{{ course.img.url }}" alt="Card image cap">
+                {% endif %}
                 <div class="card-body">
                     <h5 class="card-title">{{course.name}}</h5>
                     <p class="card-text">{{course.description}}</p>

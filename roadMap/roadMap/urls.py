@@ -12,6 +12,7 @@ urlpatterns = [
     path("", index, name="home"),
     path('user/', include("user.urls", namespace='users')),
     path('course/', include("courses.urls", namespace='courses')),
+    path("", include("resume.urls", namespace='resume')),
 ]
 
 if settings.DEBUG:

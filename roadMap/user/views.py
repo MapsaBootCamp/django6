@@ -20,13 +20,20 @@ def mentor_list(request):
 @require_http_methods(["GET", "POST"])
 def login(request):
     if request.method == "GET":
-        return render(request, "registration/login.html")
+        ctx = {}
+        next = request.GET.get("next", "")
+        if next:
+            ctx["next"] = next
+        return render(request, "registration/login.html", ctx)
     else:
         username = request.POST.get("username", "")
         password = request.POST.get("password", "")
         user = authenticate(request, username=username, password=password)
         if user is not None:
             _login(request, user)
+            next = request.GET.get("next", "")
+            if next:
+                return redirect(next)
             return redirect('home')
         else:
             return redirect('users:login')
