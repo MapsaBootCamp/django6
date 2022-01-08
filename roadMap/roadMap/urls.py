@@ -13,6 +13,8 @@ urlpatterns = [
     path('user/', include("user.urls", namespace='users')),
     path('course/', include("courses.urls", namespace='courses')),
     path("", include("resume.urls", namespace='resume')),
+    path("cart/", include("cart.urls", namespace='cart')),
+
 ]
 
 if settings.DEBUG:
