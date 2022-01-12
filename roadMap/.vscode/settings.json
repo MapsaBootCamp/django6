@@ -10,5 +10,6 @@
             "username": "pars",
             "password": "pars"
         }
-    ]
+    ],
+    "python.pythonPath": "/home/ashkan/Documents/django6/django6/venv/bin/python"
 }

@@ -22,6 +22,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+AUTH_USER_MODEL = 'user.User'
+
 LOGGING = {
     'version': 1,
     'handlers': {
@@ -70,6 +72,15 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'roadMap.urls'
 
+# SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+        'LOCATION': 'redis://127.0.0.1:6379',
+    }
+}
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -93,24 +104,24 @@ WSGI_APPLICATION = 'roadMap.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get("DB_NAME", ""),
-        'USER': os.environ.get("DB_USER", ""),
-        'PASSWORD': os.environ.get("DB_PASSWORD", ""),
-        'HOST': os.environ.get("DB_HOST", ""),
-        'PORT': os.environ.get("DB_PORT", "5432"),
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': os.environ.get("DB_NAME", ""),
+#         'USER': os.environ.get("DB_USER", ""),
+#         'PASSWORD': os.environ.get("DB_PASSWORD", ""),
+#         'HOST': os.environ.get("DB_HOST", ""),
+#         'PORT': os.environ.get("DB_PORT", "5432"),
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
