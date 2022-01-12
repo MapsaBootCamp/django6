@@ -18,10 +18,10 @@ class Migration(migrations.Migration):
                 ('title', models.CharField(max_length=255)),
             ],
         ),
-        migrations.RemoveField(
-            model_name='course',
-            name='subject',
-        ),
+        # migrations.RemoveField(
+        #     model_name='course',
+        #     name='subject',
+        # ),
         migrations.AddField(
             model_name='course',
             name='category',

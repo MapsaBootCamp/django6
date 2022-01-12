@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<form action="{% url 'users:login' %}" method="POST">
+<form action="/user/account/login/?next={{next}}" method="POST">
         {% csrf_token %}
         <label for="fname">Username:</label><br>
         <input type="text" id="fname" name="username" placeholder="username" required><br>
