@@ -71,6 +71,9 @@ class Mentor(Profile):
 
     class Meta:
         verbose_name = "Mentor"
+        permissions = [
+            ('edit_course', 'can mentor edit his/her own courses',)
+        ]
 
     def __str__(self) -> str:
         return self.email

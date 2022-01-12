@@ -22,7 +22,7 @@ class CustomUserAdmin(UserAdmin):
     add_fieldsets = (
         ("اطلاعات کاربری", {
             'classes': ('wide',),
-            'fields': ('email', 'password1', 'password2',)
+            'fields': ('email', 'password1', 'password2', 'groups')
         },
         ), (
             "سطح دسترسی", {
