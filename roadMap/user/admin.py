@@ -2,8 +2,9 @@ from django.contrib import admin
 from django.contrib.auth import get_user_model
 from django.contrib.auth.admin import UserAdmin
 
-from .models import Profile, Mentor, User
-from .forms import CustomUserChangeForm, CustomUserCreationForm
+from .models import Profile, Mentor
+from courses.models import Course
+from .forms import CustomUserChangeForm, CustomUserCreationForm, CustomMentorCreationForm
 
 User = get_user_model()
 
@@ -35,6 +36,12 @@ class CustomUserAdmin(UserAdmin):
     ordering = ('email',)
 
 
+class CustomMentorAdmin(admin.ModelAdmin):
+    add_form = CustomMentorCreationForm
+    form = CustomMentorCreationForm
+    model = Mentor
+
+
 admin.site.register(Profile)
-admin.site.register(Mentor)
+admin.site.register(Mentor, CustomMentorAdmin)
 admin.site.register(User, CustomUserAdmin)

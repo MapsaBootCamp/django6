@@ -58,6 +58,9 @@ INSTALLED_APPS = [
     'courses',
     'cart',
     'payment',
+
+    'nested_admin',
+    'jsonschema',
 ]
 
 MIDDLEWARE = [

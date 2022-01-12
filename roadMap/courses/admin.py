@@ -5,7 +5,18 @@ from .models import CourseCategory, Course, Comment
 
 @admin.register(Course)
 class CourseAdmin(admin.ModelAdmin):
-    pass
+    def get_queryset(self, request):
+        if request.user.is_superuser:
+            return super(CourseAdmin, self).get_queryset(request)
+        elif request.user.has_perm('user.can_edit_course'):
+            self.fieldsets = (
+                ('information', {
+                    'classes': ('wide',),
+                    'fields': ('name', 'category', 'img', 'price', 'description',)
+                }),
+            )
+            courses = Course.objects.filter(mentor__id=request.user.id)
+            return courses
 
 
 @admin.register(CourseCategory)
