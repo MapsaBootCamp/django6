@@ -5,7 +5,6 @@ from .models import CourseCategory, Course, Comment
 
 @admin.register(Course)
 class CourseAdmin(admin.ModelAdmin):
-    pass
     def get_queryset(self, request, *args, **kwargs):
         if request.user.is_superuser:
             return super().get_queryset(request)
