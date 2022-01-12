@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <h1>{{course.name}}</h1>
+        {% for comment in comments %}
+        <p>{{comment.content}} by: <span>{{comment.user.email}}</span></p>
+        <ul>
+            {% for key, value in comment.reply.items %}
+            <li>{{value}} by: <span>{{key}}</span></li>
+            {% endfor %}
+        </ul>
+        {% endfor %}
+        <form action="{% url 'courses:add_comment' course.id%}" method="POST">
+            {% csrf_token %}
+            {{form}}
+            <input type="submit" value="comment">
+        </form>
+
+    </body>
+
+</html>

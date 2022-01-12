@@ -42,11 +42,15 @@ class BaseUser(metaclass=MetaBase):
         except Exception as e:
             print(e)
 
+    def update(self):
+        pass
 
+    
 class Admin(BaseUser):
     type = "Admin"
     file_name = "admins.db"
     file_path = settings.USER_DATA_PATH / file_name
+
 
     def add_user(self):
         pass
@@ -56,10 +60,20 @@ class Member(BaseUser):
     type = "Member"
     file_name = "members.db"
     file_path = settings.USER_DATA_PATH / file_name
+    
+    def __init__(self, *args, **kwargs) -> None:
+        super().__init__(*args,  **kwargs)
+        self.rent_book = []
+
+    def add_to_cart(self, book):
+        self.rent_book.append(book)
+    
+    
 
 
 
-### Books
+
+### Books:
 class BaseBook(metaclass=MetaBase):
     file_name = None
     file_path = None
