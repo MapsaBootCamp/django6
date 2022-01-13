@@ -8,7 +8,7 @@ class CourseAdmin(admin.ModelAdmin):
     def get_queryset(self, request, *args, **kwargs):
         if request.user.is_superuser:
             return super().get_queryset(request)
-        elif request.user.has_perm('mentor.edit_course'):
+        elif request.user.has_perm('user.edit_course'):
             self.fieldsets = (
                 ('اطلاعات منتور', {
                     'classes': ('wide',),
