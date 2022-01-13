@@ -21,17 +21,6 @@ class Tag(models.Model):
 
 
 class Course(models.Model):
-    MY_JSON_FIELD_SCHEMA = {
-        'schema': 'Course history schema',
-        'type': 'object',
-        'properties': {
-            'students': {
-                'type': 'array',
-            }
-        },
-        'required': ['students']
-    }
-
     name = models.CharField(verbose_name=_(
         "name"), help_text="نام دوره", max_length=255)
     mentor = models.ManyToManyField(Mentor, related_name="mentors")
@@ -43,10 +32,7 @@ class Course(models.Model):
     description = models.TextField(null=True)
     students = models.ManyToManyField(
         Profile, related_name="students", through="CourseStudent")
-    class_history = models.JSONField(
-        default=dict,
-        validators=[JSONSchemaValidator(limit_value=MY_JSON_FIELD_SCHEMA)]
-    )
+    class_history = models.JSONField()
 
     def __str__(self) -> str:
         return self.name
