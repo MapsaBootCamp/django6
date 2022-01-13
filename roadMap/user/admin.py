@@ -38,3 +38,30 @@ class CustomUserAdmin(UserAdmin):
 admin.site.register(Profile)
 admin.site.register(Mentor)
 admin.site.register(User, CustomUserAdmin)
+
+
+class CustomMentorAdmin(UserAdmin):
+    add_form = CustomUserCreationForm
+    form = CustomUserChangeForm
+    model = Mentor
+    list_display = ('email', 'is_staff', 'is_active', 'is_superuser')
+    list_filter = ('email', 'is_staff', 'is_active',)
+    fieldsets = (
+        ('اطلاعات اصلی', {'fields': ('name', 'img', 'first_name')}),
+        ('Permissions', {
+         'fields': ('is_staff', 'is_active', 'user_permissions')}),
+    )
+    add_fieldsets = (
+        ("اطلاعات کاربری", {
+            'classes': ('wide',),
+            'fields': ('email', 'password1', 'password2',)
+        },
+        ), (
+            "سطح دسترسی", {
+                'fields': ('is_staff', 'is_active', 'user_permissions')
+            }
+
+        )
+    )
+    search_fields = ('is_staff',)
+    ordering = ('email',)
