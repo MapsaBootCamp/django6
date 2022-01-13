@@ -1,0 +1,15 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "roadmap",
+            "database": "roadmap",
+            "username": "pars",
+            "password": "pars"
+        }
+    ],
+    "python.pythonPath": "/home/ashkan/Documents/django6/django6/venv/bin/python"
+}
