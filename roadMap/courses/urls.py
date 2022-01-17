@@ -13,4 +13,6 @@ urlpatterns = [
     path("course-list-by-cbv/", CourseList.as_view()),
     path("course-detail/<int:course_id>", CourseDetail.as_view()),
     path("add-comment/<int:course_id>", add_comment, name="add_comment"),
+    # path("change-detail/", change_detail, name="change_detail"),
+
 ]

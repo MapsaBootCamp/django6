@@ -3,9 +3,25 @@ from django.contrib import admin
 from .models import CourseCategory, Course, Comment
 
 
+class CourseItemInline(admin.StackedInline):
+    model = Course
+
+
 @admin.register(Course)
 class CourseAdmin(admin.ModelAdmin):
-    pass
+    def get_queryset(self, request, *args, **kwargs):
+        if request.user.is_superuser:
+            return super().get_queryset(request)
+        elif request.user.has_perm('course.edit_self_course'):
+           
+            mentor_courses = Course.objects.filter(mentor__id=request.user.id)
+            return mentor_courses
+
+
+
+# @admin.register(Course)
+# class CourseAdmin(admin.ModelAdmin):
+#     pass
 
 
 @admin.register(CourseCategory)
