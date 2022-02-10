@@ -133,24 +133,24 @@ WSGI_APPLICATION = 'roadMap.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
-
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': os.environ.get("DB_NAME", ""),
-#         'USER': os.environ.get("DB_USER", ""),
-#         'PASSWORD': os.environ.get("DB_PASSWORD", ""),
-#         'HOST': os.environ.get("DB_HOST", ""),
-#         'PORT': os.environ.get("DB_PORT", "5432"),
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.environ.get("DB_NAME", ""),
+        'USER': os.environ.get("DB_USER", ""),
+        'PASSWORD': os.environ.get("DB_PASSWORD", ""),
+        'HOST': os.environ.get("DB_HOST", ""),
+        'PORT': os.environ.get("DB_PORT", "5432"),
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -205,20 +205,20 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 ROADMAP_TOKEN_VALIDATION_DAY = 2
 
-
-CELERY_BROKER_URL = "redis://localhost:6379"
+REDIS_HOST = os.environ.get("REDIS_HOST", "")
+CELERY_BROKER_URL = f"redis://{REDIS_HOST}:6379"
 CELERY_TIMEZONE = "Asia/Tehran"
-CELERY_RESULT_BACKEND = 'redis://localhost:6379/1'
+CELERY_RESULT_BACKEND = f'redis://{REDIS_HOST}:6379/1'
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_BEAT_SCHEDULE = {
     'task-first': {
-        'task': 'courses.tasks.one',
+        'task': 'one',
         'schedule': timedelta(seconds=1)
        },
     'task-second': {
-        'task': 'app.tasks.two',
+        'task': 'two',
         'schedule': crontab(minute=0, hour='*/3,10-19')
       }
 }
