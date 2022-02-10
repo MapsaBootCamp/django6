@@ -1,0 +1,24 @@
+from celery import shared_task
+import time
+
+
+@shared_task(name="send_mail")
+def send_email_task(receiner, message, subject=None):
+    time.sleep(5)
+    print("end of send email")
+    return "email sended"
+
+
+@shared_task(name="jam_zadan")
+def jam(a, b):
+    return a+b
+
+
+@shared_task(name="one")
+def one():
+    return "one hastam"
+
+
+@shared_task(name="two")
+def two():
+    return "two hastam"
