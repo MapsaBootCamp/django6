@@ -1,6 +1,10 @@
 version: "3.7"
 
 services:
+  behrad_shalgham:
+    build: ./nodejs
+    ports:
+      - 49160:8080
   django_web:
     build: .
     command: >
